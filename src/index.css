@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  h4 {
+    @apply text-lg font-semibold;
+  }
+}
+
+@layer components {
+  .button {
+    @apply border-2 rounded-md px-2 py-1 cursor-pointer hover:-translate-y-0.5 transition-all duration-150;
+  }
+}
+
+@layer utilities {
+  .container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
