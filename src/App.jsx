@@ -9,9 +9,11 @@ function App() {
   function addNewPost(e) {
     e.preventDefault();
 
-    const newPostId = posts[posts.length - 1].id;
+    const newPostId = posts.length === 0 ? 1 : posts[posts.length - 1].id + 1;
+    console.log(posts, posts.length);
+
     const newPost = {
-      id: newPostId + 1,
+      id: newPostId,
       titolo: newPostTitle,
       contenuto: "",
     };
