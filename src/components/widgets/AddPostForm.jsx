@@ -1,7 +1,7 @@
 import FormInputText from "../elements/FormInputText";
 import SubmitButton from "../elements/SubmitButton";
 
-export default function Form({
+export default function AddPostForm({
   handleSubmbit,
   titleInputValue,
   handleTitleInputChange,

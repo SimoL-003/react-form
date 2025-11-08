@@ -1,7 +1,7 @@
 import { useState } from "react";
 import blogPosts from "./data/blogPosts"; /* id, titolo, contenuto */
 import Post from "./components/widgets/Post";
-import Form from "./components/widgets/Form";
+import AddPostForm from "./components/widgets/AddPostForm";
 
 function App() {
   const [posts, setPosts] = useState(blogPosts);
@@ -32,7 +32,7 @@ function App() {
           <h1 className="mt-16">Il mio blog</h1>
 
           <div className="form-container my-8"></div>
-          <Form
+          <AddPostForm
             handleSubmbit={addNewPost}
             titleInputValue={newPostTitle}
             handleTitleInputChange={(event) =>
