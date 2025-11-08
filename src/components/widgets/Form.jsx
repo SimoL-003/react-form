@@ -1,4 +1,11 @@
-export default function Form({ handleSubmbit, inputValue, handleInputChange }) {
+import FormInputText from "../elements/FormInputText";
+import SubmitButton from "../elements/SubmitButton";
+
+export default function Form({
+  handleSubmbit,
+  titleInputValue,
+  handleTitleInputChange,
+}) {
   return (
     <form
       action=""
@@ -6,17 +13,13 @@ export default function Form({ handleSubmbit, inputValue, handleInputChange }) {
       autoComplete="off"
       className="flex gap-1"
     >
-      <input
-        value={inputValue}
-        onChange={handleInputChange}
-        id="new-title"
-        type="text"
-        placeholder="Aggiungi il titolo di un nuovo post..."
-        className="block min-w-[300px] w-fit border-2 py-1 px-1 rounded-md"
+      <FormInputText
+        id={"new-title"}
+        inputValue={titleInputValue}
+        handleInputChange={handleTitleInputChange}
+        placeholder={"Aggiungi il titolo di un nuovo post..."}
       />
-      <button type="submit" className="button block">
-        Aggiungi
-      </button>
+      <SubmitButton text={"Aggiungi post"} />
     </form>
   );
 }

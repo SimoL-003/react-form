@@ -34,8 +34,10 @@ function App() {
           <div className="form-container my-8"></div>
           <Form
             handleSubmbit={addNewPost}
-            inputValue={newPostTitle}
-            handleInputChange={(event) => setNewPostTitle(event.target.value)}
+            titleInputValue={newPostTitle}
+            handleTitleInputChange={(event) =>
+              setNewPostTitle(event.target.value)
+            }
           />
 
           <div className="posts my-8">
