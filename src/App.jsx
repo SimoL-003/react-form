@@ -7,17 +7,20 @@ function App() {
 
   function addNewPost(e) {
     e.preventDefault();
+
+    const newPostId = posts[posts.length - 1].id;
     const newPost = {
-      id: posts.length + 1,
+      id: newPostId + 1,
       titolo: newPostTitle,
       contenuto: "",
     };
-    setPosts([...posts, newPost]);
+
+    setPosts((prev) => [...prev, newPost]);
     setNewPostTitle("");
   }
 
   function deletePost(postToDelete) {
-    setPosts(() => posts.filter((curPost) => curPost.id !== postToDelete));
+    setPosts((prev) => prev.filter((curPost) => curPost.id !== postToDelete));
   }
 
   return (
