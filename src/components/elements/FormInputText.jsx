@@ -11,7 +11,7 @@ export default function FormInputText({
       type="text"
       id={id}
       placeholder={placeholder}
-      className="block min-w-[300px] w-fit border-2 py-1 px-1 rounded-md"
+      className="w-full"
     />
   );
 }

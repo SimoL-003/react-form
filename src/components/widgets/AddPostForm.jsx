@@ -11,13 +11,13 @@ export default function AddPostForm({
       action=""
       onSubmit={handleSubmbit}
       autoComplete="off"
-      className="flex gap-1"
+      className="flex gap-2"
     >
       <FormInputText
         id={"new-title"}
         inputValue={titleInputValue}
         handleInputChange={handleTitleInputChange}
-        placeholder={"Aggiungi il titolo di un nuovo post..."}
+        placeholder={"Scrivi il titolo del nuovo post..."}
       />
       <SubmitButton text={"Aggiungi post"} />
     </form>

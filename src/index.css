@@ -1,12 +1,23 @@
 @import "tailwindcss";
 
+@theme {
+  --color-black: #030303;
+  --color-white: #fdfdfd;
+  --color-light-green: #eaffe8;
+  --color-dark-green: #064c07;
+  --color-brown: #983628;
+}
+
 @layer base {
+  body {
+    @apply bg-white text-black;
+  }
   h1 {
     @apply text-4xl font-bold;
   }
 
   h2 {
-    @apply text-2xl font-semibold;
+    @apply text-3xl font-semibold;
   }
 
   h4 {
@@ -15,8 +26,15 @@
 }
 
 @layer components {
+  input {
+    @apply block min-w-[50%] w-fit border-2 border-black py-2 px-4 rounded-md focus-visible:outline-0 focus-visible:border-brown transition-all duration-300;
+  }
   .button {
-    @apply border-2 rounded-md px-2 py-1 cursor-pointer hover:-translate-y-0.5 transition-all duration-150;
+    @apply bg-brown text-white rounded-md px-4 py-2 cursor-pointer hover:bg-dark-green transition-all duration-300;
+  }
+
+  .card-post {
+    @apply bg-light-green flex justify-between items-center py-2 px-4 border-2 border-dark-green rounded-md;
   }
 }
 

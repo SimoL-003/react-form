@@ -42,7 +42,7 @@ function App() {
 
           <div className="posts my-8">
             <h2>Articoli</h2>
-            <ul>
+            <ul className="py-4 grid grid-cols-3 gap-4">
               {posts.map((curPost) => (
                 <Post
                   key={curPost.id}
