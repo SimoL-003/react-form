@@ -1,6 +1,7 @@
 import { useState } from "react";
 import blogPosts from "./data/blogPosts"; /* id, titolo, contenuto */
 import Post from "./components/widgets/Post";
+import Form from "./components/widgets/Form";
 
 function App() {
   const [posts, setPosts] = useState(blogPosts);
@@ -10,8 +11,6 @@ function App() {
     e.preventDefault();
 
     const newPostId = posts.length === 0 ? 1 : posts[posts.length - 1].id + 1;
-    console.log(posts, posts.length);
-
     const newPost = {
       id: newPostId,
       titolo: newPostTitle,
@@ -32,26 +31,12 @@ function App() {
         <div className="container">
           <h1 className="mt-16">Il mio blog</h1>
 
-          <div className="form-container my-8">
-            <form
-              action=""
-              onSubmit={addNewPost}
-              autoComplete="off"
-              className="flex gap-1"
-            >
-              <input
-                value={newPostTitle}
-                onChange={(event) => setNewPostTitle(event.target.value)}
-                id="new-title"
-                type="text"
-                placeholder="Aggiungi il titolo di un nuovo post..."
-                className="block min-w-[300px] w-fit border-2 py-1 px-1 rounded-md"
-              />
-              <button type="submit" className="button block">
-                Aggiungi
-              </button>
-            </form>
-          </div>
+          <div className="form-container my-8"></div>
+          <Form
+            handleSubmbit={addNewPost}
+            inputValue={newPostTitle}
+            handleInputChange={(event) => setNewPostTitle(event.target.value)}
+          />
 
           <div className="posts my-8">
             <h2>Articoli</h2>
