@@ -39,9 +39,9 @@ function App() {
 
   return (
     <>
-      <main className="min-h-full">
+      <main className="min-h-screen">
         <div className="container">
-          <h1 className="mt-16">Il mio blog</h1>
+          <h1 className="pt-16 text-center sm:text-start">Il mio blog</h1>
 
           <div className="form-container my-8">
             <AddPostForm
@@ -54,8 +54,8 @@ function App() {
           </div>
 
           <div className="posts my-8">
-            <h2>Articoli</h2>
-            <ul className="py-4 grid grid-cols-3 gap-4">
+            <h2 className="text-center sm:text-start">Articoli</h2>
+            <ul className="py-4 flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {posts.map((curPost) => (
                 <Post
                   key={curPost.id}

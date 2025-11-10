@@ -11,7 +11,7 @@ export default function AddPostForm({
       action=""
       onSubmit={handleSubmbit}
       autoComplete="off"
-      className="flex gap-2"
+      className="flex flex-col sm:flex-row gap-4 sm:gap-2"
     >
       <FormInputText
         id={"new-title"}

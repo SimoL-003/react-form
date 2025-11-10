@@ -46,6 +46,7 @@
   }
 }
 .edit-icon {
+  @apply hover:text-orange-500 transition-colors duration-150;
 }
 
 .delete-icon {

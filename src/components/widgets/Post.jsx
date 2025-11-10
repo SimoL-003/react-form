@@ -1,12 +1,11 @@
 import Button from "../elements/Button";
-// import DeleteButton from "../elements/DeleteButton";
-// import EditButton from "../elements/EditButton";
 
 export default function Post({ curPost, deletePost, editPostTitle }) {
   return (
     <li className="card-post">
       <h4>{curPost.titolo}</h4>
       <div className="buttons flex gap-1">
+        {/* Edit Button */}
         <Button
           handleClick={editPostTitle}
           icon={
@@ -21,6 +20,8 @@ export default function Post({ curPost, deletePost, editPostTitle }) {
             </svg>
           }
         />
+
+        {/* Delete Button */}
         <Button
           handleClick={deletePost}
           icon={
