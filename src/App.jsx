@@ -31,7 +31,6 @@ function App() {
         } else return curPost;
       })
     );
-    console.log(editedTitle, posts);
   }
 
   function deletePost(postToDeleteId) {

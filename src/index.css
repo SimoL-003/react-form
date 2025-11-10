@@ -45,3 +45,9 @@
     margin: 0 auto;
   }
 }
+.edit-icon {
+}
+
+.delete-icon {
+  @apply hover:text-red-500 transition-colors duration-150;
+}
