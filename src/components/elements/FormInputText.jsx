@@ -12,6 +12,7 @@ export default function FormInputText({
       id={id}
       placeholder={placeholder}
       className="w-full"
+      required
     />
   );
 }

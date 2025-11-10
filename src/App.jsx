@@ -21,8 +21,21 @@ function App() {
     setNewPostTitle("");
   }
 
-  function deletePost(postToDelete) {
-    setPosts((prev) => prev.filter((curPost) => curPost.id !== postToDelete));
+  function editPostTitle(postTitle, postId) {
+    let editedTitle = prompt("Modifica il titolo del tuo post", postTitle);
+
+    setPosts((prev) =>
+      prev.map((curPost) => {
+        if (curPost.id === postId) {
+          return { ...curPost, titolo: editedTitle };
+        } else return curPost;
+      })
+    );
+    console.log(editedTitle, posts);
+  }
+
+  function deletePost(postToDeleteId) {
+    setPosts((prev) => prev.filter((curPost) => curPost.id !== postToDeleteId));
   }
 
   return (
@@ -31,14 +44,15 @@ function App() {
         <div className="container">
           <h1 className="mt-16">Il mio blog</h1>
 
-          <div className="form-container my-8"></div>
-          <AddPostForm
-            handleSubmbit={addNewPost}
-            titleInputValue={newPostTitle}
-            handleTitleInputChange={(event) =>
-              setNewPostTitle(event.target.value)
-            }
-          />
+          <div className="form-container my-8">
+            <AddPostForm
+              handleSubmbit={addNewPost}
+              titleInputValue={newPostTitle}
+              handleTitleInputChange={(event) =>
+                setNewPostTitle(event.target.value)
+              }
+            />
+          </div>
 
           <div className="posts my-8">
             <h2>Articoli</h2>
@@ -47,6 +61,9 @@ function App() {
                 <Post
                   key={curPost.id}
                   curPost={curPost}
+                  editPostTitle={() =>
+                    editPostTitle(curPost.titolo, curPost.id)
+                  }
                   deletePost={() => deletePost(curPost.id)}
                 />
               ))}
