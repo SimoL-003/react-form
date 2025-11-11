@@ -1,8 +1,7 @@
 import { useState } from "react";
 import blogPosts from "./data/blogPosts"; /* id, titolo, contenuto */
 import Post from "./components/widgets/Post";
-import AddPostForm from "./components/widgets/AddPostForm";
-import EditPostForm from "./components/widgets/EditPostForm";
+import PostForm from "./components/widgets/PostForm";
 
 function App() {
   const [posts, setPosts] = useState(blogPosts);
@@ -55,7 +54,7 @@ function App() {
 
           <div className="form-container my-8">
             {postToEdit === null ? (
-              <AddPostForm
+              <PostForm
                 handleSubmbit={addNewPost}
                 titleInputValue={newPostTitle}
                 handleTitleInputChange={(event) =>
@@ -66,12 +65,15 @@ function App() {
                 buttonText={"Aggiungi post"}
               />
             ) : (
-              <EditPostForm
-                handleEditSubmbit={editPostTitle}
-                editedTitleInputValue={newPostTitle}
-                handleEditedTitleInputChange={(event) =>
+              <PostForm
+                handleSubmbit={editPostTitle}
+                titleInputValue={newPostTitle}
+                handleTitleInputChange={(event) =>
                   setNewPostTitle(event.target.value)
                 }
+                inputId={"title-to-edit"}
+                placeholder={"Modifica il titolo del tuo post..."}
+                buttonText={"Modifica titolo"}
               />
             )}
           </div>

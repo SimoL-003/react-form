@@ -5,6 +5,9 @@ export default function AddPostForm({
   handleSubmbit,
   titleInputValue,
   handleTitleInputChange,
+  inputId,
+  placeholder,
+  buttonText,
 }) {
   return (
     <form
@@ -14,12 +17,12 @@ export default function AddPostForm({
       className="flex flex-col sm:flex-row gap-4 sm:gap-2"
     >
       <FormInputText
-        id={"new-title"}
+        id={inputId}
         inputValue={titleInputValue}
         handleInputChange={handleTitleInputChange}
-        placeholder={"Scrivi il titolo del nuovo post..."}
+        placeholder={placeholder}
       />
-      <SubmitButton text={"Aggiungi post"} />
+      <SubmitButton text={buttonText} />
     </form>
   );
 }
