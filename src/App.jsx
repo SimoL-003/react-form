@@ -2,10 +2,12 @@ import { useState } from "react";
 import blogPosts from "./data/blogPosts"; /* id, titolo, contenuto */
 import Post from "./components/widgets/Post";
 import AddPostForm from "./components/widgets/AddPostForm";
+import EditPostForm from "./components/widgets/EditPostForm";
 
 function App() {
   const [posts, setPosts] = useState(blogPosts);
   const [newPostTitle, setNewPostTitle] = useState("");
+  const [postToEdit, setPostToEdit] = useState(null);
 
   function addNewPost(e) {
     e.preventDefault();
@@ -21,16 +23,24 @@ function App() {
     setNewPostTitle("");
   }
 
-  function editPostTitle(postTitle, postId) {
-    let editedTitle = prompt("Modifica il titolo del tuo post", postTitle);
+  function editingPost(post) {
+    setPostToEdit(post);
+    setNewPostTitle(post.titolo);
+  }
+
+  function editPostTitle(e) {
+    e.preventDefault();
 
     setPosts((prev) =>
       prev.map((curPost) => {
-        if (curPost.id === postId) {
-          return { ...curPost, titolo: editedTitle };
+        if (curPost.id === postToEdit.id) {
+          return { ...curPost, titolo: newPostTitle };
         } else return curPost;
       })
     );
+
+    setPostToEdit(null);
+    setNewPostTitle("");
   }
 
   function deletePost(postToDeleteId) {
@@ -44,13 +54,26 @@ function App() {
           <h1 className="pt-16 text-center sm:text-start">Il mio blog</h1>
 
           <div className="form-container my-8">
-            <AddPostForm
-              handleSubmbit={addNewPost}
-              titleInputValue={newPostTitle}
-              handleTitleInputChange={(event) =>
-                setNewPostTitle(event.target.value)
-              }
-            />
+            {postToEdit === null ? (
+              <AddPostForm
+                handleSubmbit={addNewPost}
+                titleInputValue={newPostTitle}
+                handleTitleInputChange={(event) =>
+                  setNewPostTitle(event.target.value)
+                }
+                inputId={"new-title"}
+                placeholder={"Scrivi il titolo del nuovo post..."}
+                buttonText={"Aggiungi post"}
+              />
+            ) : (
+              <EditPostForm
+                handleEditSubmbit={editPostTitle}
+                editedTitleInputValue={newPostTitle}
+                handleEditedTitleInputChange={(event) =>
+                  setNewPostTitle(event.target.value)
+                }
+              />
+            )}
           </div>
 
           <div className="posts my-8">
@@ -60,9 +83,7 @@ function App() {
                 <Post
                   key={curPost.id}
                   curPost={curPost}
-                  editPostTitle={() =>
-                    editPostTitle(curPost.titolo, curPost.id)
-                  }
+                  editPostTitle={() => editingPost(curPost)}
                   deletePost={() => deletePost(curPost.id)}
                 />
               ))}
